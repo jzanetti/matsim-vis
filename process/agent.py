@@ -2,8 +2,11 @@
 from datetime import datetime, timedelta
 from logging import getLogger
 from math import sqrt
+from random import sample
+from xml.etree.ElementTree import iterparse
 
 from numpy import NaN
+from xopen import xopen
 
 from process import TRAVEL_TRAJ_INTERVAL_MINS
 from process.activity import get_activity_info
@@ -11,6 +14,44 @@ from process.network import get_leg_info
 from process.utils import str2datetime
 
 logger = getLogger()
+
+
+def select_agents(all_agents: list, ratio: float = 1.0) -> list:
+    """Select a ratio of agents
+
+    Args:
+        all_agents (list): the list contains all the agents 
+        ratio (float, optional): the ratio of agents to be selected. Defaults to 1.0.
+
+    Returns:
+        list: selected agents
+    """
+    num_agents = int(ratio * len(all_agents))
+    return sample(all_agents, num_agents)
+
+
+
+
+def get_all_agents(plans_path: str) -> list:
+    """Get all the agents from plans
+
+    Args:
+        plans_path (str): output plans
+
+    Returns:
+        list: all the agents in the file
+    """
+    all_agents = []
+
+    tree = iterparse(xopen(plans_path, "r"), events=['start', 'end'])
+
+    for xml_event, elem in tree:
+
+        if xml_event == "start" and elem.tag == "person":
+            if elem.attrib["id"] not in all_agents:
+                all_agents.append(elem.attrib["id"])
+    
+    return all_agents
 
 
 def interp_agent_movement(agent_movement: dict, all_times: list) -> dict:

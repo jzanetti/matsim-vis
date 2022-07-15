@@ -17,7 +17,7 @@ def str2datetime(datetime_str: str, str_fmt: str = DEFAULT_DATETIME_FMT) -> date
     return datetime.strptime(datetime_str, str_fmt)
 
 
-def get_diags_time_range(diags_start_datetime: str, diags_end_datetime: str) -> list:
+def get_diags_time_range(diags_start_datetime: datetime, diags_end_datetime: datetime) -> list:
     """Get matsim diags time range
 
     Args:
@@ -27,10 +27,6 @@ def get_diags_time_range(diags_start_datetime: str, diags_end_datetime: str) -> 
     Returns:
         list: the list contains all the diags time
     """
-
-    diags_start_datetime = str2datetime(diags_start_datetime)
-    diags_end_datetime = str2datetime(diags_end_datetime)
-
     proc_datetime = diags_start_datetime
 
     diags_time_range = []

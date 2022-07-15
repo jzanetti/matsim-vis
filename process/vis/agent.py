@@ -1,8 +1,9 @@
-from cmath import isnan
 
+
+import matplotlib.patheffects as pe
 from matplotlib.animation import FFMpegWriter, FuncAnimation
-from matplotlib.pyplot import close, gca, plot, subplots
-
+from matplotlib.pyplot import close, plot, subplots
+from process.network import get_link_coords
 from process.utils import get_xy_range
 
 
@@ -64,23 +65,18 @@ def plot_agent_movement(agent_movements: dict, all_links: dict, all_facilities: 
         ax.invert_yaxis()
         for proc_link_name in all_links["links"]:
 
-            proc_link = all_links["links"][proc_link_name]
-
-            start_x = [
-                all_links["nodes"][proc_link["from_node"]]["x"],
-                all_links["nodes"][proc_link["to_node"]]["x"],
-            ]
-
-            start_y = [
-                all_links["nodes"][proc_link["from_node"]]["y"],
-                all_links["nodes"][proc_link["to_node"]]["y"],
-            ]
-
-            ax.plot(start_x, start_y, linewidth=1.0)
+            proc_link_coords = get_link_coords(all_links, proc_link_name)
+            ax.plot(
+                [proc_link_coords["x"]["start"], proc_link_coords["x"]["end"]],
+                [proc_link_coords["y"]["start"], proc_link_coords["y"]["end"]],
+                linewidth=7.5,
+                zorder=0,
+                path_effects=[pe.Stroke(linewidth=10.0, foreground="g"), pe.Normal()]
+            )
 
         for proc_facility_name in all_facilities:
             proc_facility = all_facilities[proc_facility_name]
-            ax.text(proc_facility["x"], proc_facility["y"], proc_facility_name)
+            ax.text(proc_facility["x"], proc_facility["y"], proc_facility_name, zorder=30)
 
         ax.set_xlabel("x")
         ax.set_ylabel("y")
@@ -102,6 +98,7 @@ def plot_agent_movement(agent_movements: dict, all_links: dict, all_facilities: 
         ln.set_marker("o")
         ln.set_markeredgecolor("k")
         ln.set_markersize(15)
+        ln.set_zorder(10)
         return ln,
 
     ani = FuncAnimation(fig, update, frames=agent_movements,
