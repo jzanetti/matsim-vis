@@ -89,6 +89,29 @@ def interp_agent_movement(agent_movement: dict, all_times: list) -> dict:
     return output
 
 
+def get_agent_travel_time(all_tasks: dict) -> float:
+    """Get agent travel time
+
+    Args:
+        all_tasks (dict): decoded all tasks
+
+    Returns:
+        float: decoded travel time in minutes
+    """
+    route_travel_time = 0
+    for task_id in range(len(all_tasks)):
+
+        proc_task = all_tasks[task_id]
+
+        if proc_task["type"] != "route":
+            continue
+
+        leg_info = get_leg_info(all_tasks, task_id)
+        route_travel_time += str2datetime(leg_info["elem"].attrib["trav_time"]).minute
+    
+    return route_travel_time
+
+
 def get_agent_movement(all_tasks: dict, all_links: dict) -> dict:
     """Get the agent movement from a single plan
 
