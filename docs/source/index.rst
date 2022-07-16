@@ -3,7 +3,7 @@ Welcome to MATSim-VIS
 
 **MATSim-VIS** is a package that provides many types of diagnostics from the MatSim model. For example:
 
-- agents moments
+- agents movements
 - the trafic load statistics for links
 - the agent travel time 
 - mode breakdown for each agent (e.g., car, bicyle or public transpotation)
