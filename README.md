@@ -1,4 +1,4 @@
-<img src="etc/animation.gif" width="300" height="200" /> <img src="etc/animation2.gif" width="300" height="200" />
+<img src="etc/animation.gif" width="400" height="300" /> <img src="etc/animation2.gif" width="400" height="300" />
 
 **MATSim_VIS** is a package that provides many types of diagnostics from the MatSim model. For example:
 
