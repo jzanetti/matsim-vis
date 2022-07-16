@@ -21,7 +21,15 @@ This package is under development please use it with cautious.
 Contents
 --------
 
+**Basics**:
+
 .. toctree::
 
    install/install
+
+**Examples**:
+
+.. toctree::
+
    example/case
+   example/agent_movement

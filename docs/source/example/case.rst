@@ -1,4 +1,4 @@
-The example MATSim run
+Toy village
 =====
 
 In order to quickly demostrate some features of **MATSim-VIS**, we use a **toy village** as below:

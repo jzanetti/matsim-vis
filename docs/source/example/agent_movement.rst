@@ -1,3 +1,6 @@
+Agents movements
+=====
+
 Here is an example showing the movements for all the agents in a map:
 
 First we need to import the necessary dependancies:
