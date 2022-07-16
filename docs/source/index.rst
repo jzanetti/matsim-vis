@@ -9,11 +9,11 @@ Welcome to MATSim-VIS
 - mode breakdown for each agent (e.g., car, bicyle or public transpotation)
 - policy compoarisons
 
-The package is written in _python_, and maintained by Sijin Zhang
+The package is written in *python*, and maintained by Sijin Zhang
 
 This package is under development please use it with cautious.
 
 
 .. note::
 
-   Contact _zsjzyhzp@gmail.com_
+   Contact: zsjzyhzp@gmail.com
