@@ -1,7 +1,7 @@
 Welcome to MATSim-VIS
 ===================================
 
-**MATSim_VIS** is a package that provides many types of diagnostics from the MatSim model. For example:
+**MATSim-VIS** is a package that provides many types of diagnostics from the MatSim model. For example:
 
 - agents moments
 - the trafic load statistics for links
