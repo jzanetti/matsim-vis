@@ -24,3 +24,4 @@ Contents
 .. toctree::
 
    install/install
+   example/case
