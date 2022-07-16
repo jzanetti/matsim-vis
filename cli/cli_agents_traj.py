@@ -16,8 +16,8 @@ from process.vis.agent import plot_agent_movement
 plans_path = "data/example1/output_plans.xml.gz"
 network_path = "data/example1/output_network.xml.gz"
 facility_path = "data/example1/output_facilities.xml.gz"
-diags_start_datetime = "07:58:00"
-diags_end_datetime = "08:35:00"
+diags_start_datetime = "07:30:00"
+diags_end_datetime = "08:30:00"
 agents_ratio = 1.0
 logger = setup_logging()
 output_path = "etc/animation.gif"

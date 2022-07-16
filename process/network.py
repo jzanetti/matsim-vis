@@ -1,3 +1,4 @@
+from copy import deepcopy
 from datetime import datetime, timedelta
 from xml.etree.ElementTree import iterparse
 
@@ -54,6 +55,43 @@ def get_link_density(
     
     return link_density
 
+
+def get_the_max_traffic_from_link(link_density: dict) -> int:
+    """Get the max traffic 
+
+    Args:
+        link_density (dict): link density in a dict
+
+    Returns:
+        int: max traffic
+    """
+    max_traffic = 0.0
+    for proc_t in link_density:
+        for proc_link in link_density[proc_t]:
+            if link_density[proc_t][proc_link] > max_traffic:
+                max_traffic = link_density[proc_t][proc_link]
+    
+    return max_traffic
+
+
+def get_accumulated_traffic(link_density: dict) -> dict:
+    """Get accumulated traffic load
+
+    Args:
+        link_density (dict): link density in a dict
+
+    Returns:
+        dict: accumulated density
+    """
+    all_traffic_ts = sorted(list(link_density.keys()))
+    all_link_names = list(link_density[all_traffic_ts[0]].keys())
+    accum_link_density = deepcopy(link_density)
+    for i, proc_t in enumerate(all_traffic_ts):
+        if i > 0:
+            for proc_link_name in all_link_names:
+                accum_link_density[proc_t][proc_link_name] += accum_link_density[all_traffic_ts[i - 1]][proc_link_name]
+    
+    return accum_link_density
 
 
 

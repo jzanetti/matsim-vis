@@ -2,10 +2,11 @@ import matplotlib.patheffects as pe
 from matplotlib import cm, colors
 from matplotlib.animation import FFMpegWriter, FuncAnimation
 from matplotlib.pyplot import close, colorbar, plot, subplots
-from process.network import get_link_coords
+from process.network import get_link_coords, get_the_max_traffic_from_link
+from process.utils import get_xy_range
 
 
-def plot_link_density(link_density: dict, all_links: dict, all_facilities: dict, output_path: str = "test.mp4"):
+def plot_link_density(link_density: dict, all_links: dict, all_facilities: dict, accum_traffic: bool = False, output_path: str = "test.gif", fps: int = 10):
     """Plot agent movement and save it in a mp4 format
 
     Args:
@@ -21,17 +22,37 @@ def plot_link_density(link_density: dict, all_links: dict, all_facilities: dict,
                     transform=ax.transAxes, ha="center")
     ln, = plot([], [], 'ro')
 
+    title_prefix = "Traffic load"
+    if accum_traffic:
+        title_prefix = "Accumulated traffic load"
+
     my_cmap = cm.Blues
-    my_norm = colors.Normalize(vmin=0.0, vmax=10.0)
+    my_norm = colors.Normalize(vmin=0.0, vmax=get_the_max_traffic_from_link(link_density) * 0.3)
     colorbar(cm.ScalarMappable(norm=my_norm, cmap=my_cmap), fraction=0.02, orientation="vertical", label="Traffic load")
 
     link_density = postproc_link_density(link_density, all_links)
+    xy_range = get_xy_range(all_links)
+    
+    def init():
+        ax.set_xlim(xy_range["x"]["min"], xy_range["x"]["max"])
+        ax.set_ylim(xy_range["y"]["min"], xy_range["y"]["max"])
+        ax.invert_yaxis()
+        for proc_facility_name in all_facilities:
+            proc_facility = all_facilities[proc_facility_name]
+            ax.text(proc_facility["x"], proc_facility["y"], proc_facility_name, zorder=30)
+
+        ax.set_xlabel("x")
+        ax.set_ylabel("y")
+
+        return ln,
 
     def update(i):
 
         frame = link_density[i]
         ref_link = list(frame.keys())[0]
-        title.set_text("Traffic load at {t}".format(t = frame[ref_link]["time"].strftime("%H:%M")))
+        title.set_text("{title_prefix} at {t}".format(
+            title_prefix=title_prefix,
+            t = frame[ref_link]["time"].strftime("%H:%M")))
         for link_name in frame:
             xdata = [frame[link_name]["coords"]["x"]["start"], frame[link_name]["coords"]["x"]["end"]]
             ydata = [frame[link_name]["coords"]["y"]["start"], frame[link_name]["coords"]["y"]["end"]]
@@ -44,9 +65,9 @@ def plot_link_density(link_density: dict, all_links: dict, all_facilities: dict,
         return ln,
 
     ani = FuncAnimation(fig, update, frames=len(link_density),
-                        init_func=None, blit=True)
+                        init_func=init, blit=True)
 
-    writervideo = FFMpegWriter(fps=15)
+    writervideo = FFMpegWriter(fps=fps)
 
     ani.save(output_path, writer=writervideo)
     close()

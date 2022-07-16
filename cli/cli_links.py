@@ -1,11 +1,6 @@
-from process.agent import (
-    get_agent_movement,
-    get_all_agents,
-    interp_agent_movement,
-    select_agents,
-)
+from process.agent import get_agent_movement, get_all_agents, select_agents
 from process.facility import get_facility
-from process.network import get_link_density, get_network
+from process.network import get_accumulated_traffic, get_link_density, get_network
 from process.plans import get_plans
 from process.utils import get_diags_time_range, setup_logging, str2datetime
 from process.vis.link_density import plot_link_density
@@ -15,12 +10,13 @@ from process.vis.link_density import plot_link_density
 plans_path = "data/example1/output_plans.xml.gz"
 network_path = "data/example1/output_network.xml.gz"
 facility_path = "data/example1/output_facilities.xml.gz"
-diags_start_datetime = "08:00:00"
+diags_start_datetime = "07:30:00"
 diags_end_datetime = "08:30:00"
-output_interval_mins = 3
+output_interval_mins = 2
+accum_traffic = True
 
 logger = setup_logging()
-output_path = "test.gif"
+output_path = "etc/animation2.gif"
 
 diags_start_datetime = str2datetime(diags_start_datetime)
 diags_end_datetime = str2datetime(diags_end_datetime)
@@ -49,4 +45,7 @@ link_density = get_link_density(
     agent_movements,
     list(all_links["links"].keys()))
 
-plot_link_density(link_density, all_links, all_facilities, output_path=output_path)
+if accum_traffic:
+    link_density = get_accumulated_traffic(link_density)
+
+plot_link_density(link_density, all_links, all_facilities, accum_traffic=accum_traffic, output_path=output_path)
