@@ -17,3 +17,10 @@ This package is under development please use it with cautious.
 .. note::
 
    Contact: zsjzyhzp@gmail.com
+
+Contents
+--------
+
+.. toctree::
+
+   install/install
