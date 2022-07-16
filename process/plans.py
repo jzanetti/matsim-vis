@@ -1,7 +1,3 @@
-
-from collections.abc import Iterable
-from datetime import datetime, timedelta
-from pathlib import Path
 from xml.etree.ElementTree import iterparse
 
 from xopen import xopen
