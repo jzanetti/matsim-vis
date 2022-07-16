@@ -13,10 +13,10 @@ facility_path = "data/example1/output_facilities.xml.gz"
 diags_start_datetime = "07:30:00"
 diags_end_datetime = "08:30:00"
 output_interval_mins = 2
-accum_traffic = True
+accum_traffic = False
 
 logger = setup_logging()
-output_path = "etc/animation2.gif"
+output_path = "etc/animation4.gif"
 
 diags_start_datetime = str2datetime(diags_start_datetime)
 diags_end_datetime = str2datetime(diags_end_datetime)

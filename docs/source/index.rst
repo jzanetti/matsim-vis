@@ -33,3 +33,4 @@ Contents
 
    example/case
    example/agent_movement
+   example/traffic_load
