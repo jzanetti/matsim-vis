@@ -7,15 +7,19 @@ Welcome to MATSim-VIS
 - the trafic load statistics for links
 - the agent travel time 
 - mode breakdown for each agent (e.g., car, bicyle or public transpotation)
-- policy compoarisons
+- policy comparisons
 
-The package is written in *python*, and maintained by Sijin Zhang
+The motivations for developing such a package are:
 
-This package is under development please use it with cautious.
+- To help better understanding MATSim output
+- To identify logic errors in the model setup
+- To provide a flexible and intuitive way to present the MATSim output
 
+The package is written in *python*, and developed/maintained by Sijin Zhang
 
 .. note::
 
+   This package is under development please use it with cautious.
    Contact: zsjzyhzp@gmail.com
 
 Contents
@@ -27,7 +31,7 @@ Contents
 
    install/install
 
-**Examples**:
+**Code examples**:
 
 .. toctree::
 
@@ -35,3 +39,11 @@ Contents
    example/agent_movement
    example/traffic_load
    example/travel_time
+
+**Policy compoarisons**:
+
+.. toctree::
+
+   example/pt
+
+

@@ -62,7 +62,7 @@ The codes below will produce the animation for the agents movements:
         agent_movement = get_agent_movement(all_tasks, all_links)
         agent_movements[proc_agent] = interp_agent_movement(agent_movement, all_times)
 
-    plot_agent_movement(agent_movements, all_links, all_facilities, output_path=output_path)
+    plot_agent_movement(agent_movements, {}, all_links, all_facilities, output_path=output_path)
 
 .. only:: html
 

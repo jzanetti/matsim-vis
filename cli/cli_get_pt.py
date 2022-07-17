@@ -1,0 +1,1 @@
+xml_path = "~/Github/matsim-vis/data/example2/output_transitSchedule.xml.gz"

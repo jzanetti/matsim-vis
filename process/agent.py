@@ -11,6 +11,7 @@ from xopen import xopen
 from process import TRAVEL_TRAJ_INTERVAL_MINS
 from process.activity import get_activity_info
 from process.network import get_leg_info
+from process.traj import get_travel_traj
 from process.utils import str2datetime
 
 logger = getLogger()
@@ -69,6 +70,10 @@ def interp_agent_movement(agent_movement: dict, all_times: list) -> dict:
     all_agent_times = list(agent_movement.keys())
     total_timesteps = 0
     for i, proc_time in enumerate(all_times):
+
+        if len(all_agent_times) == 0:
+            output[proc_time] = {"x": NaN, "y": NaN}
+            continue
 
         nearest_agent_time = min(all_agent_times, key=lambda d: abs(d - proc_time))
 
@@ -168,16 +173,32 @@ def get_agent_movement(all_tasks: dict, all_links: dict) -> dict:
         leg_info = get_leg_info(all_tasks, task_id)
         route_mode = leg_info["elem"].attrib["mode"]
         route_start_time = str2datetime(leg_info["elem"].attrib["dep_time"])
-        route_travel_time = str2datetime(leg_info["elem"].attrib["trav_time"]).minute
+
+        route_travel_time_str = leg_info["elem"].attrib["trav_time"]
+
+        if route_travel_time_str.startswith("-"): 
+            # sometimes it happens on bus (e.g., travel time is negative)
+            continue
+
+        route_travel_time = str2datetime(route_travel_time_str).minute
+
         if route_travel_time == 0:
             continue
+
         route_end_time = str2datetime(leg_info["elem"].attrib["dep_time"]) + timedelta(
             minutes=route_travel_time)
 
         # -------------------------
         # get links info
         # -------------------------
+        if proc_task["elem"].text is None: # e.g., walk etc.
+            continue
+
+        if proc_task["elem"].text.startswith("{"): # e.g., bus such as {"transitRouteID" ....}
+            continue
+
         link_names = proc_task["elem"].text.split(" ")
+
         link_output = {}
         for i, proc_link in enumerate(link_names):
             
@@ -199,27 +220,6 @@ def get_agent_movement(all_tasks: dict, all_links: dict) -> dict:
         output.update(get_travel_traj(route_start_time, route_end_time, link_output, link_names[1:], ave_spd))
 
     return output
-
-
-def get_travel_unit(proc_link: dict) -> dict:
-    """Get travel unit
-
-    Args:
-        proc_link (dict): link information
-
-    Returns:
-        dict: travel unit
-    """
-    travel_unit = {}
-
-    for index in ["x", "y"]:
-        if proc_link["end"][index] > proc_link["start"][index]:
-            travel_unit[index] = 1.0
-        elif proc_link["end"][index] < proc_link["start"][index]:
-            travel_unit[index] = -1.0
-        else:
-            travel_unit[index] = 0.0
-    return travel_unit
 
 
 def get_proc_link_info(
@@ -274,67 +274,6 @@ def get_proc_link_info(
         (proc_link_info["end"]["y"] - proc_link_info["start"]["y"]) ** 2)
     
     return proc_link_info
-
-
-def get_travel_traj(
-    route_start_time: datetime, 
-    route_end_time: datetime, 
-    link_output_input: dict, 
-    link_names_input: list, 
-    ave_spd: float) -> dict:
-    """Get travel trajector for a leg, e.g., the output would be something like
-        {
-            datetime.datetime(1900, 1, 1, 7, 5): {'link': 'link4', 'x': 400.0, 'y': 1586.6666666666665}
-            ...
-            datetime.datetime(1900, 1, 1, 7, 5, 18): {'link': 'link4', 'x': 400.0, 'y': 1660.0}
-        }
-
-    Args:
-        route_start_time (datetime): _description_
-        route_end_time (datetime): _description_
-        link_output_input (dict): _description_
-        link_names_input (list): _description_
-        ave_spd (float): _description_
-
-    Returns:
-        dict: the dict contains the single leg timestap location
-    """
-    proc_time = route_start_time
-    link_start_time = route_start_time
-    link_index = 0
-
-    travel_traj = {}
-    while proc_time <= route_end_time:
-
-        if link_index >= len(link_names_input):
-            break
-
-        proc_link_name = link_names_input[link_index]
-        proc_link = link_output_input[proc_link_name]
-
-        proc_unit = get_travel_unit(proc_link)
-
-        travelled_x = proc_link["start"]["x"] + ave_spd * proc_unit["x"] * (
-            (proc_time - link_start_time).total_seconds() / 60.0
-        )
-        travelled_y = proc_link["start"]["y"] + ave_spd * proc_unit["y"] * (
-            (proc_time - link_start_time).total_seconds() / 60.0
-        )
-
-        travelled_dis = sqrt(
-            (travelled_x - proc_link["start"]["x"]) ** 2 + 
-            (travelled_y - proc_link["start"]["y"]) ** 2
-        )
-
-        travel_traj[proc_time] = {"link": proc_link_name, "x": travelled_x, "y": travelled_y}
-
-        if travelled_dis >= proc_link["dis"]:
-            link_index += 1
-            link_start_time = proc_time
-        else:
-            proc_time += timedelta(minutes=TRAVEL_TRAJ_INTERVAL_MINS)
-    
-    return travel_traj
 
 
 def get_spd(total_mins: float, total_dis: float) -> float:

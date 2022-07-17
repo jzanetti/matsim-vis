@@ -34,7 +34,7 @@ all_times = get_diags_time_range(diags_start_datetime, diags_end_datetime)
 
 agent_movements = {}
 for proc_agent in agents:
-    all_tasks = get_plans(plans_path, proc_agent)
+    all_tasks, _ = get_plans(plans_path, proc_agent)
     agent_movements[proc_agent] = get_agent_movement(all_tasks, all_links)
 
 
