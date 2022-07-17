@@ -48,4 +48,12 @@ In terms of replanning, the following strategy is used:
 
 	</module>
 
-The relevant ````
+See the relevant `transitSchedule <https://github.com/jzanetti/matsim-vis/blob/master/etc/matsim/transitSchedule.xml>`_ 
+and `transitVehicles <https://github.com/jzanetti/matsim-vis/blob/master/etc/matsim/transitVehicles.xml>`_ for more details.
+
+.. only:: html
+
+   .. figure:: animation_pt.gif
+   .. figure:: animation_without_pt.gif
+
+      The vehicles movements between 07:30:00 and 08:00:00

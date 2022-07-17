@@ -21,7 +21,7 @@ transit_path = "data/example2/output_transitSchedule.xml.gz"
 
 all_links = get_network(network_path)
 pt_movement = get_pt(transit_path, all_links)
-
+# pt_movement = []
 diags_start_datetime = "07:30:00"
 diags_end_datetime = "08:00:00"
 
