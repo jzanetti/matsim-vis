@@ -40,7 +40,7 @@ Contents
    example/traffic_load
    example/travel_time
 
-**Policy compoarisons**:
+**Policy comparisons**:
 
 .. toctree::
 
