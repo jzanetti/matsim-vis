@@ -112,7 +112,10 @@ def get_agent_travel_time(all_tasks: dict) -> float:
             continue
 
         leg_info = get_leg_info(all_tasks, task_id)
-        route_travel_time += str2datetime(leg_info["elem"].attrib["trav_time"]).minute
+        trav_time = leg_info["elem"].attrib["trav_time"]
+        if trav_time.startswith("-"): # e.g., walk in some pt scenarios
+            continue
+        route_travel_time += str2datetime(trav_time).minute
     
     return route_travel_time
 

@@ -124,3 +124,20 @@ The codes for generating the movements with both car and pt are shown below:
     plot_movement(agent_movements, pt_movements, all_links, all_facilities, output_path=output_path)
 
     logger.info("animation is produced")
+
+The total travel time differences are shown below (note that the setup of transit schedule does not reflect the real world situation)
+
+.. image:: travel_time.png
+   :width: 300px
+   :height: 200px
+   :scale: 100 %
+   :alt: alternate text
+   :align: left
+.. image:: travel_time_pt.png
+   :width: 300px
+   :height: 200px
+   :scale: 100 %
+   :alt: alternate text
+   :align: left
+
+Apparently the total traval minutes increase a lot after most agents choose to talk bus
