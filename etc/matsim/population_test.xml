@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<!DOCTYPE population SYSTEM	"http://www.matsim.org/files/dtd/population_v6.dtd">
+<population>
+	<person id="p11">
+		<!-- home1 -> work -> shop -> home1 -->
+		<plan>
+			<activity type="home1" x="500" y="500" end_time="07:00" />
+			<leg mode="car">
+			</leg>
+			<activity type="work1" x="1000" y="2000" start_time="09:00" end_time="17:00"/>
+			<leg mode="car">
+			</leg>
+			<activity type="home1" x="500" y="500" />
+		</plan>
+	</person>
+</population>

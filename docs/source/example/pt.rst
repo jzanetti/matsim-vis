@@ -29,3 +29,23 @@ In MATSim, the following scoring scheme is used (again, it is not realistic ...)
             <param name="mode" value="pt"/>
             <param name="marginalUtilityOfDistance_util_m" value="10.0" />
         </parameterset>
+
+In terms of replanning, the following strategy is used:
+
+.. code-block:: xml
+
+	<module name="strategy">
+		<param name="maxAgentPlanMemorySize" value="5" /> <!-- 0 means unlimited -->
+
+		<param name="ModuleProbability_1" value="0.8" />
+		<param name="Module_1" value="BestScore" />
+
+		<param name="ModuleProbability_2" value="0.2" />
+		<param name="Module_2" value="ChangeTripMode" />
+
+		<param name="ModuleProbability_3" value="0.0" />
+		<param name="Module_3" value="TimeAllocationMutator" />
+
+	</module>
+
+The relevant ````

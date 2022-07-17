@@ -1,0 +1,211 @@
+<?xml version="1.0" ?>
+<!DOCTYPE population SYSTEM	"http://www.matsim.org/files/dtd/population_v6.dtd">
+<population>
+	<person id="p11">
+		<!-- home1 -> work -> shop -> home1 -->
+		<plan>
+			<activity type="home1" x="500" y="500" end_time="07:00" />
+			<leg mode="car">
+				<route type="links">link2-1 link1-3 link3-7 link7-8 link8-9</route>
+			</leg>
+			<activity type="work1" x="1000" y="2000" start_time="09:00" end_time="10:00"/>
+			<leg mode="car">
+				<route type="links">link9-8 link8-7 link7-12 link12-13</route>
+			</leg>
+			<activity type="shop1" x="500" y="2500" end_time="11:00" />
+			<leg mode="car">
+				<route type="links">link13-12 link12-7 link7-3 link3-1 link1-2</route>
+			</leg>
+			<activity type="home1" x="500" y="500" />
+		</plan>
+	</person>
+	<person id="p21">
+		<!-- home2 -> edu -> work -> shop -> home2 -->
+		<plan>
+			<activity type="home2" x="500" y="1000" end_time="07:00" />
+			<leg mode="car">
+				<route type="links"> link4-3 link3-7 link7-8 link8-9 link9-10</route>
+			</leg>
+			<activity type="edu1" x="2000" y="2000" end_time="08:00" />
+			<leg mode="car">
+				<route type="links"> link10-9 link9-8 </route>
+			</leg>
+			<activity type="work1" x="1000" y="2000" start_time="09:00" end_time="10:00" />
+			<leg mode="car">
+				<route type="links"> link9-8 link8-7 link7-12 link12-13 </route>
+			</leg>
+			<activity type="shop1" x="500" y="2500" end_time="11:00" />
+			<leg mode="car">
+				<route type="links"> link13-12 link12-7 link7-3 link3-4 </route>
+			</leg>
+			<activity type="home2" x="500" y="1000" />
+		</plan>
+	</person>
+	<person id="p22">
+		<!-- home2 -> work -> edu -> home2 -->
+		<plan>
+			<activity type="home2" x="500" y="1000" end_time="08:00" />
+			<leg mode="car">
+				<route type="links">link4-3 link3-7 link7-8 link8-9</route>
+			</leg>
+			<activity type="work1" x="1000" y="2000" start_time="09:00" end_time="10:00" />
+			<leg mode="car">
+				<route type="links">link8-9 link9-10</route>
+			</leg>
+			<activity type="edu1" x="2000" y="2000" end_time="11:00" />
+			<leg mode="car">
+				<route type="links">link10-9 link9-8 link8-7 link7-3 link3-4</route>
+			</leg>
+			<activity type="home2" x="500" y="1000" />
+		</plan>
+	</person>
+	<person id="p31">
+		<!-- home3 -> edu -> work -> home2 -->
+		<plan>
+			<activity type="home3" x="1000" y="1000" end_time="08:00" />
+			<leg mode="car">
+				<route type="links">link5-4 link4-3 link3-7 link7-8 link8-9 link9-10</route>
+			</leg>
+			<activity type="edu1" x="2000" y="2000" end_time="08:00" />
+			<leg mode="car">
+				<route type="links"> link10-9 link9-8 </route>
+			</leg>
+			<activity type="work1" x="1000" y="2000" start_time="09:00" end_time="10:00" />
+			<leg mode="car">
+				<route type="links">link9-8 link9-8 link7-3 link3-4 link4-5</route>
+			</leg>
+			<activity type="home3" x="1000" y="1000" />
+		</plan>
+	</person>
+	<person id="p32">
+		<!-- home3 -> work -> edu -> home3 -->
+		<plan>
+			<activity type="home3" x="1000" y="1000" end_time="08:00" />
+			<leg mode="car">
+				<route type="links">link5-4 link4-3 link3-7 link7-8 link8-9</route>
+			</leg>
+			<activity type="work1" x="1000" y="2000" start_time="09:00" end_time="10:00" />
+			<leg mode="car">
+				<route type="links">link8-9 link9-10</route>
+			</leg>
+			<activity type="edu1" x="2000" y="2000" end_time="11:00" />
+			<leg mode="car">
+				<route type="links">link10-9 link9-8 link8-7 link7-3 link3-4 link4-5</route>
+			</leg>
+			<activity type="home3" x="1000" y="1000" />
+		</plan>
+	</person>
+	<person id="p33">
+		<!-- home3 -> work -> shop -> home3 -->
+		<plan>
+			<activity type="home3" x="1000" y="1000" end_time="08:00" />
+			<leg mode="car">
+				<route type="links">link5-4 link4-3 link3-7 link7-8 ink8-9</route>
+			</leg>
+			<activity type="work1" x="1000" y="2000" start_time="09:00" end_time="10:00" />
+			<leg mode="car">
+				<route type="links">link9-8 link8-7 link7-12 link12-13</route>
+			</leg>
+			<activity type="shop1" x="500" y="2500" end_time="11:00" />
+			<leg mode="car">
+				<route type="links">link13-12 link12-7 link7-3 link3-4 link4-5</route>
+			</leg>
+			<activity type="home3" x="1000" y="1000" />
+		</plan>
+	</person>
+	<person id="p41">
+		<!-- home4 -> work -> shop -> home4 -->
+		<plan>
+			<activity type="home4" x="2000" y="1000" end_time="07:30" />
+			<leg mode="car">
+				<route type="links">link6-5 link5-4 link4-3 link3-7 link7-8 link8-9</route>
+			</leg>
+			<activity type="work1" x="1000" y="2000" start_time="09:00" end_time="10:00" />
+			<leg mode="car">
+				<route type="links">link9-8 link8-7 link7-12 link12-13</route>
+			</leg>
+			<activity type="shop1" x="500" y="2500" end_time="11:00" />
+			<leg mode="car">
+				<route type="links">link13-12 link12-7 link7-3 link3-4 link4-5 link5-6</route>
+			</leg>
+			<activity type="home4" x="2000" y="1000" />
+		</plan>
+	</person>
+	<person id="p51">
+		<!-- home5 -> edu -> work -> edu -> home5 -->
+		<plan>
+			<activity type="home5" x="500" y="2000" end_time="08:15" />
+			<leg mode="car">
+				<route type="links"> link7-8 link8-9 link9-10 </route>
+			</leg>
+			<activity type="edu1" x="2000" y="2000"  end_time="08:30" />
+			<leg mode="car">
+				<route type="links">link10-9 link9-8</route>
+			</leg>
+			<activity type="work1" x="1000" y="2000" end_time="10:00" />
+			<leg mode="car">
+				<route type="links">link8-9 link9-10</route>
+			</leg>
+			<activity type="edu1" x="2000" y="2000" end_time="10:30" />
+			<leg mode="car">
+				<route type="links">link10-9 link9-8 link8-7</route>
+			</leg>
+			<activity type="home5" x="500" y="1000" />
+		</plan>
+	</person>
+	<person id="p52">
+		<!-- home5 -> work -> shop -> home5 -->
+		<plan>
+			<activity type="home5" x="500" y="2000" end_time="08:30" />
+			<leg mode="car">
+				<route type="links"> link7-8 link8-9 </route>
+			</leg>
+			<activity type="work1" x="1000" y="2000" end_time="10:00" />
+			<leg mode="car">
+				<route type="links">link9-8 link8-7 link7-12 link12-13</route>
+			</leg>
+			<activity type="shop1" x="500" y="2500" end_time="11:00" />
+			<leg mode="car">
+				<route type="links">link13-12 link12-7 link7-8</route>
+			</leg>
+			<activity type="home5" x="500" y="1000" />
+		</plan>
+	</person>
+	<person id="p61">
+		<!-- home6 -> edu -> work -> edu -> home5 -->
+		<plan>
+			<activity type="home6" x="2500" y="2000" end_time="07:45" />
+			<leg mode="car">
+				<route type="links">link11-10 link10-9</route>
+			</leg>
+			<activity type="edu1" x="2000" y="2000" end_time="08:00" />
+			<leg mode="car">
+				<route type="links">link10-9 link9-8</route>
+			</leg>
+			<activity type="work1" x="1000" y="2000" end_time="10:00" />
+			<leg mode="car">
+				<route type="links">link8-9 link9-10</route>
+			</leg>
+			<activity type="edu1" x="2000" y="2000" end_time="10:30" />
+			<leg mode="car">
+				<route type="links">link9-10 link10-11</route>
+			</leg>
+			<activity type="home6" x="2500" y="2000" />
+		</plan>
+	</person>
+	<person id="p62">
+		<!-- home6 -> work -> shop -> home6 -->
+		<plan>
+			<activity type="home6" x="2500" y="2000" end_time="07:35" />
+			<leg mode="car">
+				<route type="links">link11-10 link10-9 link9-8</route>
+			</leg>
+			<activity type="work1" x="1000" y="2000" end_time="10:00" />
+			<leg mode="car">
+				<route type="links">link9-8 link8-7 link7-12 link12-13</route>
+			</leg>
+			<activity type="shop1" x="500" y="2500" end_time="11:00" />
+		</plan>
+	</person>
+
+</population>

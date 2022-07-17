@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE network SYSTEM "http://www.matsim.org/files/dtd/network_v1.dtd">
+
+<network name="sijin test network">
+   <nodes>
+      <node id="node_1" x="400" y="500"/>
+      <node id="node_2" x="600" y="500"/>
+      <node id="node_3" x="400" y="1000"/>
+      <node id="node_4" x="750" y="1000"/>
+      <node id="node_5" x="1500" y="1000"/>
+      <node id="node_6" x="2100" y="1000"/>
+      <node id="node_7" x="400" y="2000"/>
+      <node id="node_8" x="750" y="2000"/>
+      <node id="node_9" x="1500" y="2000"/>
+      <node id="node_10" x="2250" y="2000"/>
+      <node id="node_11" x="2600" y="2000"/>
+      <node id="node_12" x="400" y="2500"/>
+      <node id="node_13" x="600" y="2500"/>
+   </nodes>
+   <links>
+      <link id="link1-2" from="node_1" to="node_2" length="200.0" capacity="3" freespeed="5" permlanes="2"  />
+      <link id="link2-1" from="node_2" to="node_1" length="200.0" capacity="3" freespeed="5" permlanes="2"  />
+      <link id="link1-3" from="node_1" to="node_3" length="500.0" capacity="3" freespeed="5" permlanes="2"  />
+      <link id="link3-1" from="node_3" to="node_1" length="500.0" capacity="3" freespeed="5" permlanes="2"  />
+      <link id="link3-4" from="node_3" to="node_4" length="350.0" capacity="3" freespeed="5" permlanes="2"  />
+      <link id="link4-3" from="node_4" to="node_3" length="350.0" capacity="3" freespeed="5" permlanes="2"  />
+      <link id="link4-5" from="node_4" to="node_5" length="750.0" capacity="3" freespeed="5" permlanes="2"  />
+      <link id="link5-4" from="node_5" to="node_4" length="750.0" capacity="3" freespeed="5" permlanes="2"  />
+      <link id="link5-6" from="node_5" to="node_6" length="600.0" capacity="3" freespeed="5" permlanes="2"  />
+      <link id="link6-5" from="node_6" to="node_5" length="600.0" capacity="3" freespeed="5" permlanes="2"  />
+      <link id="link3-7" from="node_3" to="node_7" length="1000.0" capacity="3" freespeed="5" permlanes="2"  />
+      <link id="link7-3" from="node_7" to="node_3" length="1000.0" capacity="3" freespeed="5" permlanes="2"  />
+      <link id="link7-8" from="node_7" to="node_8" length="350.0" capacity="3" freespeed="5" permlanes="2"  />
+      <link id="link8-7" from="node_8" to="node_7" length="350.0" capacity="3" freespeed="5" permlanes="2"  />
+      <link id="link8-9" from="node_8" to="node_9" length="750.0" capacity="3" freespeed="5" permlanes="2"  />
+      <link id="link9-8" from="node_9" to="node_8" length="750.0" capacity="3" freespeed="5" permlanes="2"  />
+      <link id="link9-10" from="node_9" to="node_10" length="750.0" capacity="3" freespeed="5" permlanes="2"  />
+      <link id="link10-9" from="node_10" to="node_9" length="750.0" capacity="3" freespeed="5" permlanes="2"  />
+      <link id="link10-11" from="node_10" to="node_11" length="350.0" capacity="3" freespeed="5" permlanes="2"  />
+      <link id="link11-10" from="node_11" to="node_10" length="350.0" capacity="3" freespeed="5" permlanes="2"  />
+      <link id="link7-12" from="node_7" to="node_12" length="500.0" capacity="3" freespeed="5" permlanes="2"  />
+      <link id="link12-7" from="node_12" to="node_7" length="500.0" capacity="3" freespeed="5" permlanes="2"  />
+      <link id="link12-13" from="node_12" to="node_13" length="200.0" capacity="3" freespeed="5" permlanes="2"  />
+      <link id="link13-12" from="node_13" to="node_12" length="200.0" capacity="3" freespeed="5" permlanes="2"  />
+   </links>
+</network>
+

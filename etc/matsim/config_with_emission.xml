@@ -1,0 +1,155 @@
+<?xml version="1.0" ?>
+<!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
+<config>
+
+	<module name="global">
+		<param name="coordinateSystem" value="EPSG:3414" />
+	</module>
+
+	<module name="network">
+		<param name="inputNetworkFile" value="network_with_emission.xml" />
+	</module>
+
+	<module name="plans">
+		<param name="inputPlansFile" value="population.xml" />
+	</module>
+
+	<module name="vehicles" >
+			<param name="vehiclesFile" value="emissionVehicles.xml" />
+	</module>
+
+
+	<module name="facilities">
+			<param name="inputFacilitiesFile" value="facilities.xml" />
+			<param name="facilitiesSource" value="fromFile"/>
+	</module>
+
+	<module name="transit">
+			<param name="useTransit" value="false" />
+			<param name="transitScheduleFile" value="transitSchedule.xml" />
+			<param name="vehiclesFile" value="transitVehicles.xml" />
+			<param name="transitModes" value="pt" />
+	</module>
+
+	<module name="emissions" >
+			<!-- REQUIRED: file with HBEFA 3.1 fleet average cold emission factors -->
+			<param name="averageFleetColdEmissionFactorsFile" value="emission_table/sample_EFA_ColdStart_vehcat_2005average.txt" />
+			<!-- REQUIRED: file with HBEFA 3.1 fleet average warm emission factors -->
+			<param name="averageFleetWarmEmissionFactorsFile" value="emission_table/sample_EFA_HOT_vehcat_2005average.txt" />
+			<param name="detailedVsAverageLookupBehavior" value="directlyTryAverageTable"/>
+			<!-- following should eventually become default but currently is not: -->
+			<param name="hbefaRoadTypeSource" value="fromLinkAttributes" />
+			<param name="hbefaVehicleDescriptionSource" value="fromVehicleTypeDescription"/>
+	</module>
+
+	<module name="controler">
+		<param name="outputDirectory" value="./output" />
+		<param name="firstIteration" value="0" />
+		<param name="lastIteration" value="15" />
+	</module>
+
+	<module name="qsim">
+		<!-- "start/endTime" of MobSim (00:00:00 == take earliest activity time/ run as long as active vehicles exist) -->
+		<param name="startTime" value="00:00:00" />
+		<param name="endTime" value="00:00:00" />
+	
+		<param name = "snapshotperiod"	value = "00:06:00"/> <!-- 00:00:00 means NO snapshot writing -->
+	</module>
+
+	<module name="planCalcScore">
+		<param name="learningRate" value="1.0" />
+		<param name="BrainExpBeta" value="2.0" />
+		<param name="lateArrival" value="-18" />
+		<param name="earlyDeparture" value="-0" />
+		<param name="performing" value="+6" />
+		<param name="waiting" value="-1" />
+
+		<parameterset type="modeParams">
+			<param name="mode" value="car"/>
+			<param name="marginalUtilityOfDistance_util_m" value="-5.0" />
+		</parameterset>
+
+		<parameterset type="modeParams">
+			<param name="mode" value="walk"/>
+			<param name="marginalUtilityOfDistance_util_m" value="0.0" />
+		</parameterset>
+
+		<parameterset type="modeParams">
+			<param name="mode" value="pt"/>
+			<param name="marginalUtilityOfDistance_util_m" value="3.0" />
+		</parameterset>
+
+		<parameterset type="activityParams" >
+			<param name="activityType"            value="home1" />
+			<param name="priority"        value="1" />
+			<param name="typicalDuration" value="12:00:00" />
+		</parameterset>
+		<parameterset type="activityParams" >
+			<param name="activityType"            value="home2" />
+			<param name="priority"        value="1" />
+			<param name="typicalDuration" value="12:00:00" />
+		</parameterset>
+		<parameterset type="activityParams" >
+			<param name="activityType"            value="home3" />
+			<param name="priority"        value="1" />
+			<param name="typicalDuration" value="12:00:00" />
+		</parameterset>
+		<parameterset type="activityParams" >
+			<param name="activityType"            value="home4" />
+			<param name="priority"        value="1" />
+			<param name="typicalDuration" value="12:00:00" />
+		</parameterset>
+		<parameterset type="activityParams" >
+			<param name="activityType"            value="home5" />
+			<param name="priority"        value="1" />
+			<param name="typicalDuration" value="12:00:00" />
+		</parameterset>
+		<parameterset type="activityParams" >
+			<param name="activityType"            value="home6" />
+			<param name="priority"        value="1" />
+			<param name="typicalDuration" value="12:00:00" />
+		</parameterset>
+		<parameterset type="activityParams" >
+			<param name="activityType"            value="work1" />
+			<param name="priority"        value="2" />
+			<param name="typicalDuration" value="08:00:00" />
+			<param name="openingTime"     value="07:00:00" />
+			<param name="latestStartTime" value="09:00:00" />
+			<param name="earliestEndTime" value="" />
+			<param name="closingTime"     value="18:00:00" />
+		</parameterset>
+		<parameterset type="activityParams" >
+			<param name="activityType"            value="edu1" />
+			<param name="priority"        value="2" />
+			<param name="openingTime"     value="08:00:00" />
+			<param name="latestStartTime" value="09:00:00" />
+			<param name="typicalDuration" value="12:00:00" />
+			<param name="earliestEndTime" value="" />
+			<param name="closingTime"     value="18:00:00" />
+		</parameterset>
+		<parameterset type="activityParams" >
+			<param name="activityType"            value="shop1" />
+			<param name="priority"        value="1" />
+			<param name="openingTime"     value="06:00:00" />
+			<param name="latestStartTime" value="10:00:00" />
+			<param name="typicalDuration" value="12:00:00" />
+			<param name="earliestEndTime" value="" />
+			<param name="closingTime"     value="21:00:00" />
+		</parameterset>
+	</module>
+	
+	<module name="strategy">
+		<param name="maxAgentPlanMemorySize" value="5" /> <!-- 0 means unlimited -->
+
+		<param name="ModuleProbability_1" value="1.0" />
+		<param name="Module_1" value="BestScore" />
+
+		<param name="ModuleProbability_2" value="0.0" />
+		<param name="Module_2" value="ChangeTripMode" />
+
+		<param name="ModuleProbability_3" value="0.0" />
+		<param name="Module_3" value="TimeAllocationMutator" />
+
+	</module>
+
+</config>

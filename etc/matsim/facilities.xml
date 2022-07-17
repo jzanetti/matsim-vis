@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE facilities SYSTEM "http://www.matsim.org/files/dtd/facilities_v1.dtd">
+<facilities name="Sijin2 Facilities">
+
+<!-- ====================================================================== -->
+
+        <facility id="home1" x="500.0" y="500.0">
+                <activity type="home">
+                        <capacity value="1" />
+                        <opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+                </activity>
+        </facility>
+
+<!-- ====================================================================== -->
+
+        <facility id="home2" x="500.0" y="1000.0">
+                <activity type="home">
+                        <capacity value="2" />
+                        <opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+                </activity>
+        </facility>
+
+<!-- ====================================================================== -->
+
+        <facility id="home3" x="1000.0" y="1000.0">
+                <activity type="home">
+                        <capacity value="3" />
+                        <opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+                </activity>
+        </facility>
+
+<!-- ====================================================================== -->
+
+        <facility id="home4" x="2000.0" y="1000.0">
+                <activity type="home">
+                        <capacity value="1" />
+                        <opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+                </activity>
+        </facility>
+
+<!-- ====================================================================== -->
+
+        <facility id="home5" x="500.0" y="2000.0">
+                <activity type="home">
+                        <capacity value="2" />
+                        <opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+                </activity>
+        </facility>
+
+<!-- ====================================================================== -->
+
+        <facility id="home6" x="2500.0" y="2000.0">
+                <activity type="home">
+                        <capacity value="2" />
+                        <opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+                </activity>
+        </facility>
+
+<!-- ====================================================================== -->
+
+        <facility id="edu1" x="2000.0" y="2000.0">
+                <activity type="education">
+                        <capacity value="100" />
+                        <opentime day="wkday" start_time="09:00:00" end_time="17:00:00" />
+                </activity>
+        </facility>
+
+<!-- ====================================================================== -->
+
+        <facility id="work1" x="1000.0" y="2000.0">
+                <activity type="work">
+                        <capacity value="30" />
+                        <opentime day="wkday" start_time="09:00:00" end_time="17:00:00" />
+                </activity>
+        </facility>
+
+<!-- ====================================================================== -->
+
+        <facility id="shop1" x="500.0" y="2500.0">
+                <activity type="shop">
+                        <capacity value="150" />
+                        <opentime day="wk" start_time="06:00:00" end_time="21:00:00" />
+                </activity>
+        </facility>
+
+<!-- ====================================================================== -->
+
+</facilities>
