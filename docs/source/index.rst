@@ -50,5 +50,6 @@ Policy comparisons:
 
    example/pt
    example/emission
+   example/new_road
 
 
