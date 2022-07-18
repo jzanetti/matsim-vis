@@ -26,13 +26,15 @@ The package is written in *python*, and it is sourced from Sijin Zhang's self-le
 Contents
 --------
 
-**Basics**:
+Build and installation:
+********
 
 .. toctree::
 
    install/install
 
-**Code examples**:
+Basics:
+********
 
 .. toctree::
 
@@ -41,7 +43,8 @@ Contents
    example/traffic_load
    example/travel_time
 
-**Policy comparisons**:
+Policy comparisons:
+********
 
 .. toctree::
 
