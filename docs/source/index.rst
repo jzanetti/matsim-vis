@@ -20,6 +20,7 @@ The package is written in *python*, and developed/maintained by Sijin Zhang
 .. note::
 
    This package is under development please use it with cautious.
+   
    Contact: zsjzyhzp@gmail.com
 
 Contents

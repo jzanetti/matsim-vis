@@ -17,7 +17,10 @@ def str2datetime(datetime_str: str, str_fmt: str = DEFAULT_DATETIME_FMT) -> date
     return datetime.strptime(datetime_str, str_fmt)
 
 
-def get_diags_time_range(diags_start_datetime: datetime, diags_end_datetime: datetime) -> list:
+def get_diags_time_range(
+    diags_start_datetime: datetime,
+    diags_end_datetime: datetime, 
+    time_interval_min: int = TRAVEL_TRAJ_INTERVAL_MINS) -> list:
     """Get matsim diags time range
 
     Args:
@@ -31,7 +34,7 @@ def get_diags_time_range(diags_start_datetime: datetime, diags_end_datetime: dat
 
     diags_time_range = []
     while proc_datetime <= diags_end_datetime:
-        proc_datetime += timedelta(minutes=TRAVEL_TRAJ_INTERVAL_MINS)
+        proc_datetime += timedelta(minutes=time_interval_min)
         diags_time_range.append(proc_datetime)
     
     return diags_time_range

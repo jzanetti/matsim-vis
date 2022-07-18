@@ -31,8 +31,6 @@ def select_agents(all_agents: list, ratio: float = 1.0) -> list:
     return sample(all_agents, num_agents)
 
 
-
-
 def get_all_agents(plans_path: str) -> list:
     """Get all the agents from plans
 

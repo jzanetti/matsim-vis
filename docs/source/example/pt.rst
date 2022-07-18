@@ -1,4 +1,4 @@
-Public transportation
+Travels (Public Transpotation vs Car)
 =====
 
 A simple (unrealistic) example is used to show how the village moves with and without public transportation
@@ -140,4 +140,5 @@ The total travel time differences are shown below (note that the setup of transi
    :alt: alternate text
    :align: left
 
-Apparently the total traval minutes increase a lot after most agents choose to talk bus
+Apparently the total traval minutes increase a lot after most agents choose to talk bus (from the average of 17.5 mins to 68 mins approximately).
+Note that the travel time for bus include walk and bus trips.
