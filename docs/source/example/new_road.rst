@@ -20,12 +20,12 @@ The accumulated traffic loads differences are shown below:
    :height: 300px
    :scale: 100 %
    :alt: alternate text
-   :align: center
+   :align: left
 .. image:: without_new_roads.gif
    :width: 320px
    :height: 300px
    :scale: 100 %
    :alt: alternate text
-   :align: center
+   :align: left
 
 Of course many other analysis can be done ....
