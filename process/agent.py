@@ -319,4 +319,41 @@ def get_route_total_distance(link_output_to_use: dict) -> float:
     return total_distance
 
 
+def update_link_name_with_nodes(link_to_be_updated: dict, links_with_the_same_nodes: dict) -> dict:
+    """Update link with the new name
+
+    Args:
+        link_to_be_updated (dict): _description_
+        links_with_the_same_nodes (dict): _description_
+    """
+    def _get_update_name(link_name: str, links_with_the_same_nodes: dict) -> str:
+        """Get the new name for the link, e.g.,
+            both link4-5 and link4-5 will have the new name of node4_node5
+
+        Args:
+            link_name (str): old link name, e.g., link4-5
+            links_with_the_same_nodes (dict): the dict contains the links with new name, e.g.,
+                {
+                    link3: [link3, link5],
+                    ...
+                }
+
+        Returns:
+            str: _description_
+        """
+        for new_name in links_with_the_same_nodes:
+            if link_name in links_with_the_same_nodes[new_name]:
+                return new_name
+        
+        return link_name
+
+    for proc_t in link_to_be_updated:
+        proc_link_name = link_to_be_updated[proc_t]["link"]
+        link_to_be_updated[proc_t]["link"] = _get_update_name(
+            proc_link_name, links_with_the_same_nodes)
+
+    return link_to_be_updated
+
+
+
 

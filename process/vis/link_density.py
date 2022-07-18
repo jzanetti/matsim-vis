@@ -6,7 +6,14 @@ from process.network import get_link_coords, get_the_max_traffic_from_link
 from process.utils import get_xy_range
 
 
-def plot_link_density(link_density: dict, all_links: dict, all_facilities: dict, accum_traffic: bool = False, output_path: str = "test.gif", fps: int = 10):
+def plot_link_density(
+    link_density: dict, 
+    all_links: dict, 
+    all_facilities: dict, 
+    accum_traffic: bool = False, 
+    output_path: str = "test.gif",
+    fps: int = 10,
+    density_max: float or None = None):
     """Plot agent movement and save it in a mp4 format
 
     Args:
@@ -26,8 +33,11 @@ def plot_link_density(link_density: dict, all_links: dict, all_facilities: dict,
     if accum_traffic:
         title_prefix = "Accumulated traffic load"
 
+    if density_max is None:
+        density_max = get_the_max_traffic_from_link(link_density) * 0.3
+
     my_cmap = cm.Blues
-    my_norm = colors.Normalize(vmin=0.0, vmax=get_the_max_traffic_from_link(link_density) * 0.3)
+    my_norm = colors.Normalize(vmin=0.0, vmax=density_max)
     colorbar(cm.ScalarMappable(norm=my_norm, cmap=my_cmap), fraction=0.02, orientation="vertical", label="Traffic load")
 
     link_density = postproc_link_density(link_density, all_links)

@@ -94,6 +94,34 @@ def get_accumulated_traffic(link_density: dict) -> dict:
     return accum_link_density
 
 
+def get_links_with_the_same_nodes(all_links: dict) -> dict:
+    """inbound and outbound links share the same nodes, we need to combine
+        inbound/outbound links together otherwise they could overwrite each other
+
+    Args:
+        all_links (dict): all links information
+
+    Returns:
+        dict: the dict contains the links
+    """
+    links_with_same_nodes = {}
+    for proc_link_name in all_links["links"]:
+        proc_link = all_links["links"][proc_link_name]
+        proc_nodes = "_".join(sorted([proc_link["from_node"], proc_link["to_node"]]))
+
+        if proc_nodes not in links_with_same_nodes:
+            links_with_same_nodes[proc_nodes] = []
+        
+        links_with_same_nodes[proc_nodes].append(proc_link_name)
+    
+    # convert nodes based name to link based name
+    links_with_same_nodes_new = {}
+    for node_base_name in links_with_same_nodes:
+        proc_links = links_with_same_nodes[node_base_name]
+        links_with_same_nodes_new[proc_links[0]] = proc_links
+
+    return links_with_same_nodes_new
+
 
 def get_leg_info(all_tasks: dict, task_id: int, max_goback_id: int = 6):
     for id_diff in range(max_goback_id):
