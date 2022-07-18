@@ -15,7 +15,7 @@ The motivations for developing such a package are:
 - To identify logic errors in the model setup
 - To provide a flexible and intuitive way to present the MATSim output
 
-The package is written in *python*, and developed/maintained by Sijin Zhang
+The package is written in *python*, and it is sourced from Sijin Zhang's self-learning notes for MATSim
 
 .. note::
 
