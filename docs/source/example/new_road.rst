@@ -15,18 +15,20 @@ The new road to be built is shown below:
 
 The accumulated traffic loads differences are shown below:
 
-.. image:: with_new_roads.gif
-   :width: 330px
-   :height: 300px
-   :scale: 100 %
-   :alt: alternate text
-   :align: left
-.. image:: without_new_roads.gif
-   :width: 330px
-   :height: 300px
-   :scale: 100 %
-   :alt: alternate text
-   :align: left
+.. only:: html
+
+   .. figure:: with_new_roads.gif
+      :width: 320px
+      :height: 300px
+      :scale: 100 %
+      :alt: alternate text
+      :align: left
+   .. figure:: without_new_roads.gif
+      :width: 320px
+      :height: 300px
+      :scale: 100 %
+      :alt: alternate text
+      :align: left
 
 Of course many other analysis can be done. The codes for creating the above comparisons are:
 
