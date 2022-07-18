@@ -12,6 +12,7 @@ The new road to be built is shown below:
    :scale: 100 %
    :alt: alternate text
    :align: center
+MATSim village layout
 
 The accumulated traffic loads differences are shown below:
 
@@ -27,5 +28,6 @@ The accumulated traffic loads differences are shown below:
    :scale: 100 %
    :alt: alternate text
    :align: left
+Road load comparisons
 
 Of course many other analysis can be done ....
